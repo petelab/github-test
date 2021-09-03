@@ -1,7 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+const mySecret = process.env['testkey']
+
 function App() {
+
+  const handleGet = async ()=>{
+    const response = await fetch(`https://baconipsum.com/api/?${mySecret}`);
+    console.log(response)
+
+  }
   return (
     <div className="App">
       <h1>Hello there</h1>
@@ -10,6 +18,7 @@ function App() {
         repudiandae consequatur optio dicta enim, quibusdam ad, est accusantium
         veritatis iste reprehenderit id cum.
       </p>
+      <button onClick={handleGet}>click</button>
     </div>
   );
 }
