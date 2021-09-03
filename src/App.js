@@ -17,6 +17,7 @@ function App() {
         veritatis iste reprehenderit id 111.
       </p>
       <p>Test</p>
+      <p>Test2</p>
       <button onClick={handleGet}>click</button>
     </div>
   );
