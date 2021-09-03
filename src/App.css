@@ -1,5 +1,10 @@
+*{
+  box-sizing:border-box
+}
 .App {
   text-align: center;
+  max-width:520px;
+  margin:0 auto;
 }
 
 .App-logo {
@@ -35,4 +40,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(200px,max-content)
+}
+.box p {
+  margin:0px;
 }
