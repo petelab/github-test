@@ -2,12 +2,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-
+import Items from "./Items";
+import ItemDetail from "./ItemDetail";
+import data from "./data.js";
 function App() {
   const [value, setValue] = useState(() => {
     return localStorage.getItem("lorem") || "";
   });
   const [loading, setLoading] = useState(false);
+  const [items, setItems] = useState(() => data);
   const handleGet = async () => {
     setLoading(true);
     const response = await fetch(
@@ -23,9 +26,17 @@ function App() {
   const handleClear = () => {
     setValue("");
   };
+  const showDetail = (id) => {
+    console.log(id);
+    const b = items.find((item) => item.id === Number.parseInt(id, 10));
+    return b;
+  };
   useEffect(() => {
     localStorage.setItem("lorem", value);
   }, [value]);
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
   return (
     <BrowserRouter>
       <div className="App">
@@ -55,6 +66,12 @@ function App() {
           </Route>
           <Route path="/about">
             <h1>About Page</h1>
+          </Route>
+          <Route exact path="/items">
+            <Items items={items} />
+          </Route>
+          <Route path="/items/:id">
+            <ItemDetail onShowDetail={showDetail} />
           </Route>
         </Switch>
       </div>
