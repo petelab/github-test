@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import {useState,useEffect} from "react"
-
+import {BrowserRouter,Route,Switch,Link} from "react-router-dom"
 
 
 function App() {
@@ -26,14 +26,20 @@ function App() {
     localStorage.setItem("lorem",value)
   },[value])
   return (
+    <BrowserRouter>
     <div className="App">
-      <h1>Hello there</h1>
+      <Switch>
+<Route exact path="/">
+ <h1>Hello there</h1>
       <div className="box">
       {value !== "" ? <p>{value}</p>: <p>no value</p>}
 </div>
       <button onClick={handleGet} disabled={loading}>click</button>
       <button onClick={handleClear}>Clear Local Storage</button>
+</Route>
+    </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
