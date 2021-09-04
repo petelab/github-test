@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 const ItemDetail = (props) => {
   const params = useParams();
@@ -12,6 +12,7 @@ const ItemDetail = (props) => {
       <p>{params.id}</p>
       <p>{item.item}</p>
       <p>{item.desc}</p>
+      <Link to="/items">Back</Link>
     </>
   );
 };
