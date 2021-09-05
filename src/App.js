@@ -74,6 +74,9 @@ function App() {
           <Route path="/items/:id">
             <ItemDetail onShowDetail={showDetail} />
           </Route>
+           <Route>
+            <h2>404</h2>
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>

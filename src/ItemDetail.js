@@ -14,6 +14,14 @@ const ItemDetail = (props) => {
   console.log(params);
   const { onShowDetail } = props;
   const [item, setItem] = useState(onShowDetail(params.id));
+  const [toggle,setToggle] = useState(false)
+  const handleToggleClick = ()=>{
+    if(toggle){
+      setToggle(false)
+    }else{
+      setToggle(true)
+    }
+  }
   const { details } = item;
   //   console.log(details);
   useEffect(() => {
@@ -24,6 +32,9 @@ const ItemDetail = (props) => {
       <p>{params.id}</p>
       <p>{item.item}</p>
       <p>{item.desc}</p>
+      <button onClick={handleToggleClick} >{toggle ? "hide":"show"}</button>
+  {toggle && <p>{item.details}</p>}
+      
 
       <Link to="/items">Back</Link>
     </>
