@@ -14,7 +14,9 @@ const ItemDetail = (props) => {
   console.log(params);
   const { onShowDetail } = props;
   const [item, setItem] = useState(onShowDetail(params.id));
+ 
   const [toggle,setToggle] = useState(false)
+  
   const handleToggleClick = ()=>{
     if(toggle){
       setToggle(false)
@@ -22,11 +24,22 @@ const ItemDetail = (props) => {
       setToggle(true)
     }
   }
-  const { details } = item;
+  if(item){
+const { details } = item;
+  }
+  
   //   console.log(details);
   useEffect(() => {
     console.log(item);
   }, [item]);
+ if(!item){
+   return (
+     <>
+     <p>Could not find item</p>
+     <Link to="/items">To items</Link>
+     </>
+     )
+ }
   return (
     <>
       <p>{params.id}</p>

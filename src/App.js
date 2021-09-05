@@ -71,7 +71,7 @@ function App() {
           <Route exact path="/items">
             <Items items={items} />
           </Route>
-          <Route path="/items/:id">
+          <Route exact path="/items/:id">
             <ItemDetail onShowDetail={showDetail} />
           </Route>
            <Route>
