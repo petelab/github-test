@@ -31,6 +31,7 @@ function App() {
     const b = items.find((item) => item.id === Number.parseInt(id, 10));
     return b;
   };
+
   useEffect(() => {
     localStorage.setItem("lorem", value);
   }, [value]);
